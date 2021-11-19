@@ -10,7 +10,7 @@ export class MensagemService {
   constructor() { }
 
   private mensagens: Mensagem[] = [];
-  private listaMensagensAtualiuzada = new Subject<Mensagem[]>();
+  private listaMensagensAtualizada = new Subject<Mensagem[]>();
 
   getMensagens(): Mensagem[]{
     return [...this.mensagens];
@@ -21,10 +21,10 @@ export class MensagemService {
       mensagem: men,
     };
     this.mensagens.push(mensagem)
-    this.listaMensagensAtualiuzada.next([...this.mensagens]);
+    this.listaMensagensAtualizada.next([...this.mensagens]);
   }
-  getListarDeMensagensAtualizadaObservable(){
-    return this.listaMensagensAtualiuzada.asObservable();
+  getListaDeMensagensAtualizadaObservable(){
+    return this.listaMensagensAtualizada.asObservable();
   }
 
 }

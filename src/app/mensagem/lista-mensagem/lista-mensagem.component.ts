@@ -13,7 +13,7 @@ import { Subscription, Observable } from 'rxjs';
   templateUrl: './lista-mensagem.component.html',
   styleUrls: ['./lista-mensagem.component.css']
 })
-export class ListaMensagemComponent implements OnInit {
+export class ListaMensagemComponent implements OnInit, OnDestroy {
 
   mensagens: Mensagem[] = [];
   private mensagensSubscription: Subscription;
@@ -23,10 +23,8 @@ export class ListaMensagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.mensagens = this.mensagemService.getMensagens();
-    this.mensagensSubscription = this.mensagemService
-    .getListarDeMensagensAtualizadaObservable()
-    .subscribe((mensagens: Mensagem[])=>{
-      this.mensagens;
+    this.mensagensSubscription = this.mensagemService.getListaDeMensagensAtualizadaObservable().subscribe((mensagens: Mensagem[])=>{
+      this.mensagens = mensagens;
     });
   }
 
