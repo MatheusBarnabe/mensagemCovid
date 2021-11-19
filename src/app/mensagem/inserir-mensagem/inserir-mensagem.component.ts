@@ -29,6 +29,5 @@ export class InserirMensagemComponent implements OnInit {
     );
     form.resetForm();
 
-    this.mensagemService.adicionarMensagem(form.value.memsagem);
   }
 }
